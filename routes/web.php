@@ -24,6 +24,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
     Route::get('/', 'AccountsController@index')->name('account');
     Route::get('grafico', 'AccountsController@chart')->name('account.charts');
+    Route::get('dados/grafico', 'AccountsController@dataChart');
 
     Route::get('minhas-transacoes', 'TransactionsController@index')->name('transactions');
     Route::get('nova/transacao', 'TransactionsController@create')->name('transaction.create');

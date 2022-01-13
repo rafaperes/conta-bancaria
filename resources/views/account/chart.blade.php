@@ -19,8 +19,6 @@
 @push('script')
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-var result = <?= $result; ?>;
-
 google.charts.load('current', {
     'packages': ['bar']
 });
@@ -28,15 +26,30 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 
-    var data = google.visualization.arrayToDataTable(result);
+    let columnchart_material = document.getElementById('columnchart_material')
 
-    var options = {
-        colors: ['#1cc88a', '#e74a3b']
-    };
+    $.ajax({
+        url: '/dashboard/dados/grafico',
+        type: 'GET',
+        success: function(data) {
 
-    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+            if (data.length <= 1) {
+                columnchart_material.innerText = 'Histórico vazio.'
+            } else {
+                var data = google.visualization.arrayToDataTable(data);
 
-    chart.draw(data, options);
+                var options = {
+                    colors: ['#1cc88a', '#e74a3b']
+                };
+
+                var chart = new google.charts.Bar(columnchart_material);
+
+                chart.draw(data, options);
+            }
+        },
+        error: function(data) { }
+    });
+
 }
 </script>
 @endpush

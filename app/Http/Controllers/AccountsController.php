@@ -24,13 +24,12 @@ class AccountsController extends Controller
     }
 
     /**
-     * Gráficos com dados sobre a conta.
+     * Retorna os dados para popular o gráfico de histórico mensal.
      *
      * @return \Illuminate\Http\Response
      */
-    public function chart()
+    public function dataChart()
     {
-        $title = 'Gráficos';
         $historic = Transaction::transactionHistoric();
 
         $result[] = ['Mês','Depósito total', 'Saque total'];
@@ -42,9 +41,19 @@ class AccountsController extends Controller
             ];
         }
 
-        $result = json_encode($result);
+        return response()->json($result);
+    }
+
+    /**
+     * Retorna view dos gráficos.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chart()
+    {
+        $title = 'Gráficos';
         
-        return view('account.chart', compact('title', 'result'));
+        return view('account.chart', compact('title'));
     }
 
 }
