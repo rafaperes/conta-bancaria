@@ -12,7 +12,7 @@
 
 1. Faça um clone ou baixe esse projeto;
 2. Execute os comandos `composer install` e `npm install` para instalar as dependências do projeto;
-3. Altere o arquivo `.env.example` para `.env`;
+3. Faça uma cópia do arquivo `.env.example` e altere para `.env`;
 4. Execute o comando `php artisan key:generate`;
 5. Crie um banco de dados com um nome de sua escolha e altere os arquivos `.env`  e `config/database.php` com os parâmetros do seu database;
 6. Execute o comando `php artisan migrate` para criar as tabelas;
