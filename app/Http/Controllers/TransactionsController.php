@@ -57,6 +57,15 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'value.required' => 'O campo valor é obrigatório.',
+        ];
+
+        $request->validate([
+            'type' => 'required',
+            'value' => 'required',
+        ], $messages);
+
         try {
 
             DB::beginTransaction();

@@ -28,20 +28,26 @@
             <div class="form-group">
                 <label for="">Tipo de transação:</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1"
-                        value="1" required>
+                    <input class="form-check-input @error('type') is-invalid @enderror" type="radio" name="type"
+                        id="inlineRadio1" value="1">
                     <label class="form-check-label" for="inlineRadio1">Depósito</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2"
-                        value="2">
+                    <input class="form-check-input @error('type') is-invalid @enderror" type="radio" name="type"
+                        id="inlineRadio2" value="2">
                     <label class="form-check-label" for="inlineRadio2">Saque</label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="">Valor</label>
-                <input type="text" name="value" class="form-control money" placeholder="Valor" required>
+                <label for="">Valor:</label>
+                <input type="text" name="value" class="form-control money @error('value') is-invalid @enderror"
+                    placeholder="Valor" value="{{ old('value') }}">
+                @error('value')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
 
             <input type="submit" class="btn btn-success" value="Confirmar">

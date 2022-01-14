@@ -57,7 +57,7 @@
                                     <div class="form-group">
                                         <input id="password" type="password"
                                             class="form-control form-control-user @error('password') is-invalid @enderror"
-                                            name="password" placeholder="Senha">
+                                            name="password" placeholder="Senha" value="{{ old('pasword') }}">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
                                     <div class="form-group">
                                         <input id="password_confirmation" type="password"
                                             class="form-control form-control-user @error('password_confirmation') is-invalid @enderror"
-                                            name="password_confirmation" placeholder="Confirmar senha">
+                                            name="password_confirmation" placeholder="Confirmar senha" value="{{ old('password_confirmation') }}">
                                         @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
